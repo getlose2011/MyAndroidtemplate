@@ -1,12 +1,14 @@
 package com.getlose.mytemplate.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.getlose.mytemplate.ContentProviderActivity
 import com.getlose.mytemplate.R
 import kotlinx.android.synthetic.main.row_activity_function.view.*
 
@@ -33,7 +35,19 @@ class FunctionAdapter(val Functions: List<String>,var context: Context) : Recycl
             functionClick(position)
         }
     }
+
     private fun functionClick(position: Int) {
+        when(position){
+            0->{
+                Intent(context, ContentProviderActivity::class.java).apply {
+                    context.startActivity(this)
+                }
+            }
+//            2->{
+//
+//            }
+            else->return
+        }
         Log.d(TAG, "FunctionAdapter, functionClick: $position")
         Toast.makeText(context,Functions.get(position), Toast.LENGTH_LONG).show()
     }
