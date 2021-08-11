@@ -1,6 +1,7 @@
 package com.getlose.mytemplate
 
 import android.app.Activity
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -13,6 +14,14 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        val user = getSharedPreferences("atm", Context.MODE_PRIVATE)
+            .getString("PREF_USERID","")
+        val password = getSharedPreferences("atm", Context.MODE_PRIVATE)
+            .getString("PREF_PASSWORD","")
+
+        ed_userid.setText(user)
+        ed_passwd.setText(password)
     }
 
     fun login(view: View){
@@ -23,6 +32,14 @@ class LoginActivity : AppCompatActivity() {
         if(user == "jack" && password == "1234"){
             Toast.makeText(this, "登入成功", Toast.LENGTH_LONG).show()
             setResult(Activity.RESULT_OK)
+
+            //記憶使用者帳密
+            getSharedPreferences("atm", Context.MODE_PRIVATE)
+                .edit()
+                .putString("PREF_USERID",user)
+                .putString("PREF_PASSWORD",password)
+                .apply()
+
             finish()
         } else {
             AlertDialog.Builder(this)
