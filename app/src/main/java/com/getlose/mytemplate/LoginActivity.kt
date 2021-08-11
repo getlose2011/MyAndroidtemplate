@@ -2,18 +2,26 @@ package com.getlose.mytemplate
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
+    //tag string
+    val TAG = MainActivity::class.java.canonicalName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        val check_login = intent.getBooleanExtra(getString(R.string.check_login),false)
+        Log.d(TAG, "getString(R.string.check_login): $check_login")
+
 
         val user = getSharedPreferences("atm", Context.MODE_PRIVATE)
             .getString("PREF_USERID","")
@@ -31,7 +39,9 @@ class LoginActivity : AppCompatActivity() {
 
         if(user == "jack" && password == "1234"){
             Toast.makeText(this, "登入成功", Toast.LENGTH_LONG).show()
-            setResult(Activity.RESULT_OK)
+            val intent = Intent()
+            intent.putExtra(getString(R.string.login_result),"ok")
+            setResult(Activity.RESULT_OK,intent)
 
             //記憶使用者帳密
             getSharedPreferences("atm", Context.MODE_PRIVATE)

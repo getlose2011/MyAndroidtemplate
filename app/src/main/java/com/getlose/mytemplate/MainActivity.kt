@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun goLoginActivity() {
         Intent(this,LoginActivity::class.java).apply {
+            putExtra(getString(R.string.check_login),login)
             startActivityForResult(this, RC_LOGIN)
         }
     }
@@ -38,7 +39,8 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RC_LOGIN) {
             if (resultCode == Activity.RESULT_OK) {
-                Log.d(TAG, "RESULT, $RC_LOGIN , ok")
+                val login_result = data?.getStringExtra(getString(R.string.login_result))
+                Log.d(TAG, "RESULT, $login_result")
             }else{
                 goLoginActivity()
             }

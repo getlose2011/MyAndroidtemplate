@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyTemplate</string>
+    <string name="check_login">CHECK_LOGIN</string>
+    <string name="login_result">LOGIN_RESULT</string>
 </resources>
