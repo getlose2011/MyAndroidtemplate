@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.getlose.mytemplate.ContentProviderActivity
 import com.getlose.mytemplate.R
+import com.getlose.mytemplate.RoomActivity
 import kotlinx.android.synthetic.main.row_activity_function.view.*
 
 class FunctionAdapter(val Functions: List<String>,var context: Context) : RecyclerView.Adapter<FunctionHolder>() {
@@ -40,6 +41,11 @@ class FunctionAdapter(val Functions: List<String>,var context: Context) : Recycl
         when(position){
             0->{
                 Intent(context, ContentProviderActivity::class.java).apply {
+                    context.startActivity(this)
+                }
+            }
+            1->{
+                Intent(context, RoomActivity::class.java).apply {
                     context.startActivity(this)
                 }
             }
