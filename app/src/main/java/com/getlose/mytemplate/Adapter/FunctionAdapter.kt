@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.getlose.mytemplate.ContentProviderActivity
 import com.getlose.mytemplate.R
 import com.getlose.mytemplate.RoomActivity
-import kotlinx.android.synthetic.main.row_activity_function.view.*
+import kotlinx.android.synthetic.main.row_function.view.*
 
 class FunctionAdapter(val Functions: List<String>,var context: Context) : RecyclerView.Adapter<FunctionHolder>() {
 
@@ -19,7 +19,7 @@ class FunctionAdapter(val Functions: List<String>,var context: Context) : Recycl
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FunctionHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.row_activity_function,parent,false)
+            .inflate(R.layout.row_function,parent,false)
         Log.d(TAG, "FunctionAdapter, onCreateViewHolder")
         return FunctionHolder(view)
     }
