@@ -1,9 +1,8 @@
-package com.getlose.mytemplate.data
+package com.getlose.mytemplate
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.getlose.mytemplate.R
 import org.json.JSONArray
 import java.net.URL
 
