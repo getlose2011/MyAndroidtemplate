@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     //判斷使用者登入狀態
     var login = false
     //list for recycle view
-    val Functions = listOf<String>("Content Provider & 危險權限","資料儲存 Room","Camera2","Camera3","Camera4","Camera5","Camera6","Camera7","Camera8","Camera9","Camera10","Camera11")
+    val Functions = listOf<String>("Content Provider & 危險權限","資料儲存 Room","網路連線與 JSON 資料解析實務","Camera3","Camera4","Camera5","Camera6","Camera7","Camera8","Camera9","Camera10","Camera11")
 
     companion object{
         //判斷登入頁面回傳的requestCode

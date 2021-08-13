@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.getlose.mytemplate">
-    <!-- 讀取聯絡人權限 -->
+
+    <!--讀取聯絡人權限-->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!--開啓網路權限-->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyTemplate">
-        <activity android:name=".RoomActivity"></activity>
+        android:theme="@style/Theme.MyTemplate"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".data.UrlConnectActivity"></activity>
+        <activity android:name=".RoomActivity" />
         <activity android:name=".ContentProviderActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
@@ -20,7 +27,5 @@
             </intent-filter>
         </activity>
     </application>
-
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
 </manifest>
