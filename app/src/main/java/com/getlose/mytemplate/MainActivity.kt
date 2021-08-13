@@ -5,6 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.getlose.mytemplate.Adapter.FunctionAdapter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -60,4 +62,17 @@ class MainActivity : AppCompatActivity() {
         recycler.adapter = FunctionAdapter(Functions,this)
     }
 
+    //toolbar menu
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    //toolbar menu check selected
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.antion_call){
+            Log.d(TAG, "onOptionsItemSelected: antion_call")
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }
