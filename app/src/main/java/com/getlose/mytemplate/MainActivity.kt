@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     //tag string
-    val TAG = MainActivity::class.java.canonicalName
+    val TAG = MainActivity::class.java.simpleName
     //判斷使用者登入狀態
     var login = false
     //list for recycle view

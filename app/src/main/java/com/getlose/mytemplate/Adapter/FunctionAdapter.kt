@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.row_function.view.*
 
 class FunctionAdapter(val Functions: List<String>,var context: Context) : RecyclerView.Adapter<FunctionHolder>() {
 
-    val TAG = FunctionAdapter::class.java.canonicalName
+    val TAG = FunctionAdapter::class.java.simpleName
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FunctionHolder {
         val view = LayoutInflater.from(parent.context)

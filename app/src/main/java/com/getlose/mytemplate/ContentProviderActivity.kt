@@ -10,7 +10,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
 class ContentProviderActivity : AppCompatActivity() {
-    val TAG = ContentProviderActivity::class.java.canonicalName
+    val TAG = ContentProviderActivity::class.java.simpleName
     val RC_REQUEST = 100
 
     override fun onCreate(savedInstanceState: Bundle?) {

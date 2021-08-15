@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.row_game.view.*
 
 class GameAdapter(var context: Context) : RecyclerView.Adapter<GameHolder>(){
 
-    val TAG = GameAdapter::class.java.canonicalName
+    val TAG = GameAdapter::class.java.simpleName
     var records: List<Record>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameHolder {

@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_room.*
 //可參考https://ithelp.ithome.com.tw/articles/10223511
 class RoomActivity : AppCompatActivity() {
     //tag string
-    val TAG = RoomActivity::class.java.canonicalName
+    val TAG = RoomActivity::class.java.simpleName
     private val adapter = GameAdapter(this)
     var dbHelper :RoomDbHelper? = null
 
