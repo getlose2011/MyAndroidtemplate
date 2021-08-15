@@ -3,12 +3,14 @@ package com.getlose.mytemplate
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.getlose.mytemplate.Model.SnookerEvent
+import com.google.gson.Gson
 import org.json.JSONArray
 import java.net.URL
 
 class UrlConnectActivity : AppCompatActivity() {
 
-    val TAG = UrlConnectActivity::class.java.canonicalName
+    val TAG = UrlConnectActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +25,15 @@ class UrlConnectActivity : AppCompatActivity() {
             val json = JSONArray(data)
             Log.d(TAG, "array length: ${json.length()}")
             for (i in 0..json.length()-1){
-                val obj = json.getJSONObject(i)
-                Log.d(TAG, "obj: ${obj.getInt("ID")}")
+                //還未用gson外掛前
+                //val obj = json.getJSONObject(i)
+                //Log.d(TAG, "obj: ${obj.getInt("ID")}")
+
+                //gson
+                val result = Gson().fromJson(data,SnookerEvent::class.java)
+                result.forEach {
+                    Log.d(TAG, "snooker data=> ${it}")
+                }
             }
             //Log.d(TAG, "URL: $data")
         }.start()
