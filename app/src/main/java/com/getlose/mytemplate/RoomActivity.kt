@@ -10,68 +10,57 @@ import com.getlose.mytemplate.Adapter.GameAdapter
 import com.getlose.mytemplate.data.Record
 import com.getlose.mytemplate.data.RoomDbHelper
 import kotlinx.android.synthetic.main.activity_room.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 //可參考https://ithelp.ithome.com.tw/articles/10223511
-class RoomActivity : AppCompatActivity() {
+class RoomActivity : AppCompatActivity(),CoroutineScope{
     //tag string
     val TAG = RoomActivity::class.java.simpleName
+    private lateinit var job:Job
     private val adapter = GameAdapter(this)
     var dbHelper :RoomDbHelper? = null
+
+    override val coroutineContext: CoroutineContext
+        get() = job+Dispatchers.Main//launch 的程序跑在 UI thread
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_room)
+        job = Job()
 
         dbHelper = RoomDbHelper.getInstance(this)
 
         recycler.layoutManager = LinearLayoutManager(this)
         recycler.setHasFixedSize(true)
 
-        //非ui執行緒
-        Thread(){
-
+        launch {
             adapter.records = dbHelper?.RecordDao()?.getAll()
-            //ui執行緒
-            runOnUiThread {
-                recycler.adapter = adapter
-            }
-
+            recycler.adapter = adapter
             dbHelper?.RecordDao()?.getAll()?.forEach{
                 Log.d(TAG, "records: nick:${it.nickname}, counter:${it.counter}")
-                deleteRecord(it)
+                dbHelper?.RecordDao()?.delete(it)
             }
-
-        }.start()
+        }
 
         //存檔
         btn_save.setOnClickListener {
             val nick = ed_nick.text.toString()
             val counter = ed_counter.text.toString().toIntOrNull()?:0
-            //非ui執行緒
-            Thread(){
+            launch {
                 dbHelper?.RecordDao()?.insert(Record(nick,counter))
-
                 val records = dbHelper?.RecordDao()?.getAll()
-
-                //ui執行緒
-                runOnUiThread {
-                    // Stuff that updates the UI
-                    updateData(records)
-                }
-
-            }.start()
+                updateData(records)
+            }
         }
-
     }
 
     //更新
     fun updateData(records: List<Record>?){
         adapter.update(records)
-    }
-
-    //刪除
-    fun deleteRecord(record: Record){
-        dbHelper?.RecordDao()?.delete(record)
     }
 
     //提示
@@ -83,6 +72,12 @@ class RoomActivity : AppCompatActivity() {
                         "3.Database 抽象(操作Dao物件)")
             .setPositiveButton("ok",null)
             .show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        //可必避使用者在這個activity時,馬上按了返回鍵,也停止Coroutines
+        job.cancel()
     }
 
 }

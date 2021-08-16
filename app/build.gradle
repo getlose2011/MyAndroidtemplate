@@ -44,10 +44,16 @@ dependencies {
     //room libraries
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-common:$room_version"
+    //room 可以支援 Coroutines
+    implementation "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
     //gson
-    implementation 'com.google.code.gson:gson:2.8.7'
+    implementation "com.google.code.gson:gson:2.8.7"
+
+    //Kotlin Coroutines 協程
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core: 1.5.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android: 1.5.1"
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
