@@ -17,7 +17,8 @@ class ComponentActivity : AppCompatActivity() {
         setContentView(R.layout.activity_component)
 
         val colors = arrayOf("red","blue","dark")
-        val adapter = ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,colors)
+        val adapter = ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,colors)
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
         spinner.adapter = adapter
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(
