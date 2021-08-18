@@ -1,0 +1,3 @@
+shift + F6 //重新命名
+Alt + Shift + 向上鍵/向下鍵  //移動整行/段落
+Ctrl + Shift + Backspace //回到上次編輯的地方
