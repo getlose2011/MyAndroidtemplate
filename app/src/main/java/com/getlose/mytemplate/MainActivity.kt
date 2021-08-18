@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         "資料儲存 Room用Kotlin Coroutines 協程",
         "網路連線與 JSON 資料解析實務",
         "API 串接應用",
-        "Camera4",
+        "Android 元件",
         "Camera5",
         "Camera6",
         "Camera7",

@@ -53,7 +53,12 @@ class FunctionAdapter(val Functions: List<String>,var context: Context) : Recycl
                 }
             }
             3->{
-            Intent(context, ApiActivity::class.java).apply {
+                Intent(context, ApiActivity::class.java).apply {
+                    context.startActivity(this)
+                }
+            }
+            4->{
+                Intent(context, ComponentActivity::class.java).apply {
                 context.startActivity(this)
             }
         }
