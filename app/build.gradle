@@ -51,6 +51,9 @@ dependencies {
     //gson
     implementation "com.google.code.gson:gson:2.8.7"
 
+    //coil
+    implementation("io.coil-kt:coil:1.2.0")
+
     //Kotlin Coroutines 協程
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core: 1.5.1"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android: 1.5.1"

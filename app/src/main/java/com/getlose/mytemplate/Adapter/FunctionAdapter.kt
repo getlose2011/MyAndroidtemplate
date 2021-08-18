@@ -8,10 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.getlose.mytemplate.ContentProviderActivity
-import com.getlose.mytemplate.R
-import com.getlose.mytemplate.RoomActivity
-import com.getlose.mytemplate.UrlConnectActivity
+import com.getlose.mytemplate.*
 import kotlinx.android.synthetic.main.row_function.view.*
 
 class FunctionAdapter(val Functions: List<String>,var context: Context) : RecyclerView.Adapter<FunctionHolder>() {
@@ -55,6 +52,11 @@ class FunctionAdapter(val Functions: List<String>,var context: Context) : Recycl
                     context.startActivity(this)
                 }
             }
+            3->{
+            Intent(context, ApiActivity::class.java).apply {
+                context.startActivity(this)
+            }
+        }
             else->return
         }
         Log.d(TAG, "FunctionAdapter, functionClick: $position")

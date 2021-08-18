@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.getlose.mytemplate">
 
-    <!--讀取聯絡人權限-->
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <!--開啓網路權限-->
+    <!-- 開啓網路權限 -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 讀取聯絡人權限 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTemplate"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UrlConnectActivity"></activity>
+        <activity android:name=".ApiActivity"></activity>
+        <activity android:name=".UrlConnectActivity" />
         <activity android:name=".RoomActivity" />
         <activity android:name=".ContentProviderActivity" />
         <activity android:name=".LoginActivity" />
@@ -27,5 +28,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

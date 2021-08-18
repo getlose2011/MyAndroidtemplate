@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         "Content Provider & 危險權限",
         "資料儲存 Room用Kotlin Coroutines 協程",
         "網路連線與 JSON 資料解析實務",
-        "Camera3",
+        "API 串接應用",
         "Camera4",
         "Camera5",
         "Camera6",
