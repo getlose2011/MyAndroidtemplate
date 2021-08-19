@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.getlose.mytemplate.Adapter.FunctionAdapter
+import com.getlose.mytemplate.Service.CacheIntentService
 import com.getlose.mytemplate.Service.CacheService
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -88,8 +89,12 @@ class MainActivity : AppCompatActivity() {
         if(item.itemId == R.id.cache){
             Log.d(TAG, "onOptionsItemSelected: cache")
             //啓動service
-            cacheService = Intent(this,CacheService::class.java)
+            //cacheService = Intent(this,CacheService::class.java)
+            //啓動IntentService
+            cacheService = Intent(this,CacheIntentService::class.java)
             startService(cacheService)
+            startService(Intent(this,CacheIntentService::class.java))
+            startService(Intent(this,CacheIntentService::class.java))
         }
         return super.onOptionsItemSelected(item)
     }

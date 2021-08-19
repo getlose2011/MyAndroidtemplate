@@ -27,6 +27,7 @@
             </intent-filter>
         </activity>
         <service android:name=".Service.CacheService" />
+        <service android:name=".Service.CacheIntentService" />
     </application>
 
 </manifest>
