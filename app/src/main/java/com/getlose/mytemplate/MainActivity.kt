@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.getlose.mytemplate.Adapter.FunctionAdapter
+import com.getlose.mytemplate.Service.CacheService
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -31,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         "Camera9",
         "Camera10",
         "Camera11")
+
+    private var cacheService : Intent? = null
 
     companion object{
         //判斷登入頁面回傳的requestCode
@@ -82,9 +85,19 @@ class MainActivity : AppCompatActivity() {
 
     //toolbar menu check selected
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.antion_call){
-            Log.d(TAG, "onOptionsItemSelected: antion_call")
+        if(item.itemId == R.id.cache){
+            Log.d(TAG, "onOptionsItemSelected: cache")
+            //啓動service
+            cacheService = Intent(this,CacheService::class.java)
+            startService(cacheService)
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        //移除service
+        if(cacheService != null)
+            stopService(cacheService)
     }
 }
