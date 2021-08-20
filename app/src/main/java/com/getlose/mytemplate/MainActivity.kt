@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         "網路連線與 JSON 資料解析實務",
         "API 串接應用",
         "Android 元件",
-        "Camera5",
+        "Fragment",
         "Camera6",
         "Camera7",
         "Camera8",

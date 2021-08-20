@@ -57,11 +57,16 @@ class FunctionAdapter(val Functions: List<String>,var context: Context) : Recycl
                     context.startActivity(this)
                 }
             }
-            4->{
+            4-> {
                 Intent(context, ComponentActivity::class.java).apply {
-                context.startActivity(this)
+                    context.startActivity(this)
+                }
             }
-        }
+            5->{
+                Intent(context, FragmentActivity::class.java).apply {
+                        context.startActivity(this)
+                    }
+            }
             else->return
         }
         Log.d(TAG, "FunctionAdapter, functionClick: $position")

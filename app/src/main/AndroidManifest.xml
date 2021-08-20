@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.getlose.mytemplate">
-    <!-- 開啓網路權限 -->
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- 讀取聯絡人權限 -->
+
+    <!-- 讀取聯絡人權限 -->
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- 開啓網路權限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTemplate"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ComponentActivity"></activity>
+        <activity android:name=".FragmentActivity"></activity>
+        <activity android:name=".ComponentActivity" />
         <activity android:name=".ApiActivity" />
         <activity android:name=".UrlConnectActivity" />
         <activity android:name=".RoomActivity" />
@@ -26,6 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service android:name=".Service.CacheService" />
         <service android:name=".Service.CacheIntentService" />
     </application>
