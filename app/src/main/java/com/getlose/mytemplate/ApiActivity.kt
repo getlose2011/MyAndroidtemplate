@@ -28,10 +28,10 @@ class ApiActivity : AppCompatActivity() ,CoroutineScope{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_api)
 
+        job = Job()
+
         recycler.layoutManager = LinearLayoutManager(this)
         recycler.setHasFixedSize(true)
-
-        job = Job()
 
         launch {
             val data = URL("https://api.themoviedb.org/3/movie/popular?api_key=33ad9f87ec7be68f26f525aab89143eb&language=zh-TW&page=1")
