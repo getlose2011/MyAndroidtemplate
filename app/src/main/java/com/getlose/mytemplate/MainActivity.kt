@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         "API 串接應用",
         "Android 元件",
         "Fragment",
-        "Camera6",
+        "ViewModel",
         "Camera7",
         "Camera8",
         "Camera9",

@@ -67,6 +67,11 @@ class FunctionAdapter(val Functions: List<String>,var context: Context) : Recycl
                         context.startActivity(this)
                     }
             }
+            6->{
+            Intent(context, ViewModelActivity::class.java).apply {
+                context.startActivity(this)
+            }
+        }
             else->return
         }
         Log.d(TAG, "FunctionAdapter, functionClick: $position")
