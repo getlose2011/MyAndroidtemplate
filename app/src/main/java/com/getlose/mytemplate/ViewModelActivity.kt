@@ -3,6 +3,7 @@ package com.getlose.mytemplate
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.getlose.mytemplate.Adapter.MovieAdapter
@@ -35,16 +36,19 @@ class ViewModelActivity : AppCompatActivity()  {
             adapter = MovieAdapter(it)
             recycler.adapter = adapter//MovieAdapter(result.results)
             adapter.notifyDataSetChanged()
+            progressBar.setVisibility(View.GONE)
 
         })
 
         btn_popular.setOnClickListener {
             Log.d(TAG, "btn_popular")
+            progressBar.setVisibility(View.VISIBLE)
             viewModel.getData("https://api.themoviedb.org/3/movie/popular?api_key=33ad9f87ec7be68f26f525aab89143eb&language=zh-TW&page=1")
         }
 
         btn_rank.setOnClickListener {
             Log.d(TAG, "btn_rank")
+            progressBar.setVisibility(View.VISIBLE)
             //https://www.themoviedb.org/settings/api?language=id
             viewModel.getData("https://api.themoviedb.org/3/movie/top_rated?api_key=33ad9f87ec7be68f26f525aab89143eb&language=zh-TW&page=1")
         }
