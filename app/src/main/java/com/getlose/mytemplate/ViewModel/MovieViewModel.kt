@@ -18,7 +18,7 @@ class MovieViewModel : ViewModel() {
     fun getData(url: String){
         viewModelScope.launch(Dispatchers.IO) {
             val data = URL(url).readText()
-            //用value給值後，會通知observe
+            //用postValue或value給值後，會通知observe
             val result = Gson().fromJson(data, MovieEvent::class.java)
             movie.postValue(result.results)
         }
