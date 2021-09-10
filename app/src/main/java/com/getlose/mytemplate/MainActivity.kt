@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         "Android 元件",
         "Fragment",
         "ViewModel",
-        "Camera7",
+        "SnakeGame",
         "Camera8",
         "Camera9",
         "Camera10",
