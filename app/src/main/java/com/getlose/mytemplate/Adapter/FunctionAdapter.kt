@@ -77,6 +77,11 @@ class FunctionAdapter(val Functions: List<String>,var context: Context) : Recycl
                     context.startActivity(this)
                 }
             }
+            8-> {
+            Intent(context, MaskActivity::class.java).apply {
+                context.startActivity(this)
+            }
+        }
             else->return
         }
         Log.d(TAG, "FunctionAdapter, functionClick: $position")

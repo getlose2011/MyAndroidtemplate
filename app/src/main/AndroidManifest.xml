@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.getlose.mytemplate">
-    <!-- 讀取聯絡人權限 -->
+    <!-- 開啓網路權限 -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTemplate"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SnakeActivity"></activity>
+        <activity android:name=".MaskActivity"></activity>
+        <activity android:name=".SnakeActivity" />
         <activity android:name=".ViewModelActivity" />
         <activity android:name=".FragmentActivity" />
         <activity android:name=".ComponentActivity" />
@@ -29,9 +30,9 @@
 
         <service android:name=".Service.CacheService" />
         <service android:name=".Service.CacheIntentService" />
-    </application> <!-- 開啓網路權限 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-
+    </application>
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

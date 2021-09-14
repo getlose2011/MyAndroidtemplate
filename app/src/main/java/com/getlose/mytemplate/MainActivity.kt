@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         "Fragment",
         "ViewModel",
         "SnakeGame",
-        "Camera8",
+        "Mask",
         "Camera9",
         "Camera10",
         "Camera11")
