@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.getlose.mytemplate.BuildConfig
 import com.getlose.mytemplate.MaskActivity
 import com.getlose.mytemplate.Model.MaskModel
-import com.getlose.mytemplate.Model.Request.RequestApiModel
 import com.google.gson.Gson
 import okhttp3.Response
 import java.io.IOException
@@ -14,11 +13,6 @@ import java.io.IOException
 class MaskViewModel : ViewModel() {
     val TAG = MaskActivity::class.java.simpleName
     var feature = MutableLiveData<String>()
-    var body = MutableLiveData<String>()
-
-    private companion object {
-        const val REQUEST_FLASH_LIST = "flash_list"
-    }
 
     fun getMaskData(){
 
@@ -37,32 +31,6 @@ class MaskViewModel : ViewModel() {
                     }
 
                 }
-        )
-    }
-
-    fun getUserData(){
-
-        OkHttpUtil.mOkHttpUtil.postAysnc(
-                "http://10.3.109.72:56874/api/WebAPI/admin_get_test",
-                    RequestApiModel().apply {
-                        request = REQUEST_FLASH_LIST
-                        param = RequestApiModel.RequestApiParamModel().apply{
-                            email = "ggg@sss.com"
-                        }
-                    },
-                    object : OkHttpUtil.ICallback {
-                        override fun onResponse(response: Response) {
-                            var data = response.body?.string()
-                            //val result = Gson().fromJson(data, UserModel::class.java)
-                            Log.d(TAG, "onResponse: ${data}")
-                            //body.postValue(result?.body)
-                        }
-
-                        override fun onFailure(e: IOException) {
-                            TODO("Not yet implemented")
-                        }
-
-                    }
         )
     }
 
