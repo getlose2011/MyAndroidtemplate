@@ -27,8 +27,10 @@ class MaskAdapter : RecyclerView.Adapter<MaskAdapter.MaskHolder>() {
     }
 
     override fun onBindViewHolder(holder: MaskHolder, position: Int) {
-        val store_name = features?.get(position)?.properties?.name
-        holder.binding.tvStoreName.text = store_name
+        val feature = features?.get(position)?.properties
+        holder.binding.tvStoreName.text = feature.name
+        holder.binding.tvAdultCount.text = feature.mask_adult.toString()
+        holder.binding.tvChildCount.text = feature.mask_child.toString()
     }
 
     //holder
