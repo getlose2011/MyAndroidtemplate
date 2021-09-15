@@ -1,5 +1,8 @@
 import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
 import com.getlose.mytemplate.BuildConfig
+import com.getlose.mytemplate.library.Generic
 import com.google.gson.Gson
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
@@ -35,7 +38,12 @@ class OkHttpUtil {
             .build()
     }
 
-    fun getAysnc(url: String, callback: ICallback){
+    fun getAysnc(url: String, pb: ProgressBar? = null, callback: ICallback){
+        //轉圈圈
+        Generic.execOnMainThread{
+            pb?.visibility = View.VISIBLE
+        }
+
         var request = with(Request.Builder()){
             url(url)
             get()
@@ -46,10 +54,18 @@ class OkHttpUtil {
         call?.enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 callback.onFailure(e)
+                Generic.execOnMainThread{
+                    pb?.visibility = View.GONE
+                }
             }
 
             override fun onResponse(call: Call, response: Response) {
                 callback.onResponse(response)
+                //轉圈圈
+
+                Generic.execOnMainThread{
+                    pb?.visibility = View.GONE
+                }
             }
         })
     }
