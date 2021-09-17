@@ -1,6 +1,5 @@
 package com.getlose.mytemplate.ViewModel
 
-import android.view.View
 import android.widget.ProgressBar
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

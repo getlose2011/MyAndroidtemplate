@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.getlose.mytemplate.Model.Feature
 import com.getlose.mytemplate.databinding.RowMaskBinding
 
-class MaskAdapter : RecyclerView.Adapter<MaskAdapter.MaskHolder>() {
+class MaskAdapter(private val itemClickListener: IMaskItemClickListener) : RecyclerView.Adapter<MaskAdapter.MaskHolder>() {
 
     val TAG = MaskAdapter::class.java.simpleName
 
@@ -28,11 +28,19 @@ class MaskAdapter : RecyclerView.Adapter<MaskAdapter.MaskHolder>() {
 
     override fun onBindViewHolder(holder: MaskHolder, position: Int) {
         val feature = features?.get(position)?.properties
-        holder.binding.tvStoreName.text = feature.name
-        holder.binding.tvAdultCount.text = feature.mask_adult.toString()
-        holder.binding.tvChildCount.text = feature.mask_child.toString()
+        holder.binding.tvName.text = feature.name
+        holder.binding.tvAdultAmount.text = feature.mask_adult.toString()
+        holder.binding.tvChildAmount.text = feature.mask_child.toString()
+        holder.binding.layoutItem.setOnClickListener {
+            itemClickListener.onItemClickListener(features?.get(position))
+        }
     }
 
     //holder
     inner class MaskHolder(var binding: RowMaskBinding): RecyclerView.ViewHolder(binding.root){}
+
+    //item click
+    interface IMaskItemClickListener {
+        fun onItemClickListener(data: Feature)
+    }
 }

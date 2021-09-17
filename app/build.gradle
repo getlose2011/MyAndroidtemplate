@@ -16,6 +16,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        //需向下相容，因為 Android 6(SDK 23)之前，尚未支援向量圖片格式。
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
