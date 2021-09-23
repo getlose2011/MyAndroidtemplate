@@ -13,7 +13,7 @@ import java.io.IOException
 
 class MaskViewModel : ViewModel() {
     val TAG = MaskActivity::class.java.simpleName
-    var features = MutableLiveData<List<Feature>>()
+    var featuresData = MutableLiveData<List<Feature>>()
 
     fun getMaskData(pb: ProgressBar? = null){
 
@@ -23,11 +23,9 @@ class MaskViewModel : ViewModel() {
                 override fun onResponse(response: Response) {
                     var data = response.body?.string()
                     val result = Gson().fromJson(data, MaskModel::class.java)
-                    features.postValue(result?.features)
+                    featuresData.postValue(result?.features)
                 }
-
                 override fun onFailure(e: IOException) {}
-
             }
         )
     }
