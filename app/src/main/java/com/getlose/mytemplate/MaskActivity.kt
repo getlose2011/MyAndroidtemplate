@@ -24,30 +24,25 @@ class MaskActivity : AppCompatActivity(), MaskAdapter.IMaskItemClickListener {
     private lateinit var binding: ActivityMaskBinding
     private lateinit var recyclerAdapter: MaskAdapter
     //預設城市
-    private var currentCounty: String = "臺東縣"
+    private var currentCounty: String = "新北市"
     //預設鄉鎮
-    private var currentTown: String = "池上鄉"
-    //從viewModel取得口罩資料
-    private var featuresData : List<Feature>? = null
+    private var currentTown: String = "新莊區"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //viewmodel
+        //viewmodel init
         viewModel = ViewModelProvider(this).get(MaskViewModel::class.java)
         //listen mask data
         viewModel.featuresData.observe(this, { features ->
             runOnUiThread {
-                featuresData = features
-                setRecyclerData()
+                recyclerAdapter.features = features
             }
         })
 
         initView()
-
-        getData()
     }
 
     //初始化畫面
@@ -60,10 +55,10 @@ class MaskActivity : AppCompatActivity(), MaskAdapter.IMaskItemClickListener {
 
         //spinner county
         var countyAdapter = ArrayAdapter(this, R.layout.simple_spinner_dropdown_item, CountyUtil.getAllCountiesName())
-        //county 分隔線
+        //spinner county 分隔線
         countyAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
         binding.spinnerCounty.adapter = countyAdapter
-        //county 監聽
+        //spinner county 監聽
         binding.spinnerCounty.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 currentCounty = binding.spinnerCounty.selectedItem.toString()
@@ -73,7 +68,7 @@ class MaskActivity : AppCompatActivity(), MaskAdapter.IMaskItemClickListener {
             }
         }
 
-        //town listener
+        //spinner town listener
         binding.spinnerTown.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                     parent: AdapterView<*>?,
@@ -82,7 +77,7 @@ class MaskActivity : AppCompatActivity(), MaskAdapter.IMaskItemClickListener {
                     id: Long
             ) {
                 currentTown = binding.spinnerTown.selectedItem.toString()
-                setRecyclerData()
+                getData()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
@@ -98,7 +93,7 @@ class MaskActivity : AppCompatActivity(), MaskAdapter.IMaskItemClickListener {
         setSpinnerTown()
     }
 
-    //設定town spinner及鄉鎮
+    //設定spinner town 及鄉鎮
     private fun setSpinnerTown() {
         var townAdapter = ArrayAdapter(
                         this,
@@ -107,24 +102,18 @@ class MaskActivity : AppCompatActivity(), MaskAdapter.IMaskItemClickListener {
         townAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
         binding.spinnerTown.adapter = townAdapter
         binding.spinnerTown.setSelection(CountyUtil.getTownIndexByName(currentCounty, currentTown))
+        getData()
     }
 
-    //取得資料
+    //從viewModel取得資料
     private fun getData() {
         //取得口罩資料
+        viewModel.county = currentCounty
+        viewModel.town = currentTown
         viewModel.getMaskData(binding.pb)
     }
 
-    //設定recycler view data
-    private fun setRecyclerData() {
-        if(featuresData != null){
-            recyclerAdapter.features = featuresData!!.filter {
-                it.properties.county == currentCounty && it.properties.town == currentTown
-            }
-        }
-    }
-
-    //口罩detail
+    //路轉到另一個Activity,口罩detail
     override fun onItemClickListener(data: Feature) {
         Log.d(TAG, "onItemClickListener: ${data.properties.name}")
         val intent = Intent(this,MaskDetailActivity::class.java)
