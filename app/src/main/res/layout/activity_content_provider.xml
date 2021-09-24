@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:onClick="getReadContacts"
+        android:onClick="getReadContactsPermission"
         android:text="聯絡人權限"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:onClick="accessFineLocation"
+        android:onClick="getAccessFineLocationPermission"
         android:text="位置權限"
         app:layout_constraintStart_toStartOf="@+id/btn_read_contacts"
         app:layout_constraintTop_toBottomOf="@+id/btn_read_contacts" />
