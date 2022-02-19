@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <TextView
+
+
+    <com.getlose.mytemplate.ui.JFTextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,6 +18,8 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
     <EditText
         android:id="@+id/ed_userid"
@@ -27,8 +31,7 @@
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-
-    <TextView
+    <com.getlose.mytemplate.ui.JFTextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,7 +39,7 @@
         android:text="密碼"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="@+id/ed_userid"
-        app:layout_constraintTop_toBottomOf="@+id/ed_userid" />
+        app:layout_constraintTop_toBottomOf="@+id/ed_userid"  />
 
     <EditText
         android:id="@+id/ed_passwd"
@@ -67,5 +70,7 @@
         android:text="取消"
         app:layout_constraintStart_toEndOf="@+id/button"
         app:layout_constraintTop_toTopOf="@+id/button" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
